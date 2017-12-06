@@ -1,5 +1,6 @@
 rxjava2+okhttp3+retrofit2 组合的一种方式
 
+https://jitpack.io/#majunm/http/v1  使用方式
 
 http://www.baidu.com?data=json 可以调用该形式的接口
 
