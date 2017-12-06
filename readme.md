@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/majunm/http.svg)](https://jitpack.io/#majunm/http)
+
 rxjava2+okhttp3+retrofit2 组合的一种方式
 
 缓存|断点续传暂未实现 ..
