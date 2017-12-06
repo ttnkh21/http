@@ -5,6 +5,18 @@ rxjava2+okhttp3+retrofit2 组合的一种方式
 缓存|断点续传暂未实现 ..
 https://jitpack.io/#majunm/http  使用方式
 
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+	dependencies {
+    	        compile 'com.github.majunm.http:http:v1.0.2'
+    }
+
+
 http://www.baidu.com?data=json 可以调用该形式的接口
 
 UpdateRequest 必须继承 CommonRequest
