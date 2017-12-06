@@ -7,9 +7,9 @@ package common.config;
 
 public class CommonConfig {
     public static boolean DEBUG = true;
-    public static final String API_BASE_HOST = !DEBUG ? "http://deve28api.76iw.com/" : "http://e28api.76iw.com/";//默认API主机地址
-    public static final String API_HOST_VERSION = "v2/";//版本接口的版本号|| app版本1.3 接口v2
-    public static final String API_HOST = API_BASE_HOST + API_HOST_VERSION;//默认API主机地址
+    public static  String API_BASE_HOST = !DEBUG ? "http://deve28api.76iw.com/" : "http://e28api.76iw.com/";//默认API主机地址
+    public static  String API_HOST_VERSION = "v2/";//版本接口的版本号|| app版本1.3 接口v2
+    public static  String API_HOST = API_BASE_HOST + API_HOST_VERSION;//默认API主机地址
     public static final String COOKIE_PREFS = "Cookies_Prefs";//默认Cookie缓存目录
 
     public static final int DEFAULT_TIMEOUT = 60;//默认超时时间（秒）
