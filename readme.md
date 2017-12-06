@@ -23,6 +23,79 @@ UpdateRequest 必须继承 CommonRequest
         |@ObtainPath("version/version") 请求后缀填入注解
 
 
+大部分代码参考和使用 http://www.xiaoyaoyou1212.com ,没告诉他,不知道不会不打我
+注解部分是我加的,所有请求后缀都走请求体(javabean)
+
+初始化建议application中
+~~~
+private void http() {
+        Logger.getLogConfig()
+                .configAllowLog(CommonConfig.DEBUG)//是否输出日志,日志开关
+                .configShowBorders(true)//是否排版显示
+                .configTagPrefix("Logger")//设置标签前缀
+                .configFormatTag("%d{HH:mm:ss:SSS} %t %c{-5}")//个性化设置标签，默认显示包名
+                .configLevel(Log.VERBOSE);//设置日志最小输出级别，默认Log.VERBOSE
+
+        HttpLib.config(this)//配置请求主机地址
+                .baseUrl(CommonConfig.API_HOST)
+                //配置全局请求头
+                .globalHeaders(new HashMap<String, String>())
+                //配置全局请求参数
+                .globalParams(new HashMap<String, String>())
+                //配置读取超时时间，单位秒
+                .readTimeout(30)
+                //配置写入超时时间，单位秒
+                .writeTimeout(30)
+                //配置连接超时时间，单位秒
+                .connectTimeout(30)
+                //配置请求失败重试次数
+                .retryCount(3)
+                //配置请求失败重试间隔时间，单位毫秒
+                .retryDelayMillis(1000)
+                //配置是否使用cookie
+                //.setCookie(true)
+                //配置自定义cookie
+                //.apiCookie(new ApiCookie(this))
+                //配置是否使用OkHttp的默认缓存
+                .setHttpCache(true)
+                //配置OkHttp缓存路径
+                .setHttpCacheDirectory(new File(HttpLib.getContext().getCacheDir(), CommonConfig.CACHE_HTTP_DIR))
+                //配置自定义OkHttp缓存
+                .httpCache(new Cache(new File(HttpLib.getContext().getCacheDir(), CommonConfig.CACHE_HTTP_DIR), CommonConfig.CACHE_MAX_SIZE))
+                //配置自定义离线缓存
+                .cacheOffline(new Cache(new File(HttpLib.getContext().getCacheDir(), CommonConfig.CACHE_HTTP_DIR), CommonConfig.CACHE_MAX_SIZE))
+                //配置自定义在线缓存
+                .cacheOnline(new Cache(new File(HttpLib.getContext().getCacheDir(), CommonConfig.CACHE_HTTP_DIR), CommonConfig.CACHE_MAX_SIZE))
+                //配置开启Gzip请求方式，需要服务器支持
+//                .postGzipInterceptor()
+                //配置应用级拦截器
+                // .interceptor(new HttpLogInterceptor()
+                //        .setLevel(HttpLogInterceptor.Level.BODY))
+                // 打印全部日志
+                .networkInterceptor(new HttpLogInterceptor()
+                        .setLevel(HttpLogInterceptor.Level.BODY))
+                //配置网络拦截器
+                .networkInterceptor(new NoCacheInterceptor())
+                //配置转换工厂
+                .converterFactory(IGsonFactory2.create())
+                //配置适配器工厂
+                .callAdapterFactory(RxJava2CallAdapterFactory.create())
+                //配置请求工厂
+//                .callFactory(new Call.Factory() {
+//                    @Override
+//                    public Call newCall(Request request) {
+//                        return null;
+//                    }
+//                })
+                //配置连接池
+                // .connectionPool(new ConnectionPool())
+                //配置主机证书验证
+                .hostnameVerifier(new SSLUtil.UnSafeHostnameVerifier("http://192.168.1.100/"))
+                //配置SSL证书验证
+                .SSLSocketFactory(SSLUtil.getSslSocketFactory(null, null, null));
+    }
+~~~
+
 1.返回String,自己手动解析
 
         Porgress mPorgress = new Porgress(this);
