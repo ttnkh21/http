@@ -23,7 +23,7 @@ UpdateRequest 必须继承 CommonRequest
         |@ObtainPath("version/version") 请求后缀填入注解
 
 
-大部分代码参考和使用 http://www.xiaoyaoyou1212.com ,没告诉他,不知道不会不打我
+大部分代码参考和使用 [http://www.xiaoyaoyou1212.com] ,没告诉他,不知道会不会打我
 注解部分是我加的,所有请求后缀都走请求体(javabean)
 
 初始化建议application中
