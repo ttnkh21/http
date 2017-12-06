@@ -55,6 +55,7 @@ UpdateRequest 必须继承 CommonRequest
 
 =======
 
+~~~
 public interface Api {
     String KEY = "data";
     String PATH = "path";
@@ -77,5 +78,5 @@ public interface Api {
     @POST
     Observable<ResponseBody> uploadFiles(@Url() String url, @Part() List<MultipartBody.Part> parts);
 }
-
+~~~
 =======
