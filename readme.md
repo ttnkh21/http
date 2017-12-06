@@ -6,6 +6,8 @@ http://www.baidu.com?data=json 可以调用该形式的接口
 
 UpdateRequest 必须继承 CommonRequest
         |@ObtainPath("version/version") 请求后缀填入注解
+
+
 1.返回String,自己手动解析
 
         Porgress mPorgress = new Porgress(this);
