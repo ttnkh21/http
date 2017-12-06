@@ -53,3 +53,29 @@ UpdateRequest 必须继承 CommonRequest
                 }
             }, ll);
 
+=======
+
+public interface Api {
+    String KEY = "data";
+    String PATH = "path";
+
+    @FormUrlEncoded
+    @POST("{path}")
+    Observable<String> runPost(@Path(value = PATH, encoded = true) String path,
+                               @Field(KEY) String json);
+
+    @GET("{path}")
+    Observable<String> runGet(@Path(value = PATH, encoded = true) String path,
+                              @Query(KEY) String json);
+
+    @Streaming
+    @GET
+    Observable<ResponseBody> downFile(@Url() String url, @QueryMap Map<String, String> maps);
+
+    @Multipart
+    //@POST("/")
+    @POST
+    Observable<ResponseBody> uploadFiles(@Url() String url, @Part() List<MultipartBody.Part> parts);
+}
+
+=======
