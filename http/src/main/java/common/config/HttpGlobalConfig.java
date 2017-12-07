@@ -11,7 +11,6 @@ import javax.net.ssl.SSLSocketFactory;
 
 import api.ApiHost;
 import api.HttpLib;
-import cache.ApiCache;
 import cookie.ApiCookie;
 import http.HttpRequestManager;
 import interceptor.GzipRequestInterceptor;
@@ -21,10 +20,8 @@ import okhttp3.Cache;
 import okhttp3.Call;
 import okhttp3.ConnectionPool;
 import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
-import retrofit2.Retrofit;
 
 /**
  * 作者：马俊
@@ -49,7 +46,8 @@ public class HttpGlobalConfig {
     private String baseUrl;//基础域名
     private int retryDelayMillis;//请求失败重试间隔时间
     private int retryCount;//请求失败重试次数
-//    private static OkHttpClient.Builder mOkHttpBuilder;
+
+    //    private static OkHttpClient.Builder mOkHttpBuilder;
 //    private static Retrofit.Builder mRetrofitBuilder;
 //    private static ApiCache.Builder mApiCacheBuilder;
     private HttpGlobalConfig() {
@@ -116,6 +114,9 @@ public class HttpGlobalConfig {
         return this;
     }
 
+    public void build() {
+        HttpRequestManager.getInstance().init();
+    }
 
     /**
      * 设置主机验证机制

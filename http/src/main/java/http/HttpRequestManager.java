@@ -87,6 +87,13 @@ public class HttpRequestManager {
     //=========单例=========
     private HttpRequestManager() {
         mHandler = new Handler(Looper.getMainLooper());
+        init();
+    }
+
+    /**
+     * 初始化时机不对,再次调用一次修正问题<br/>
+     */
+    public void init() {
         mHttpGlobalConfig = HttpLib.config();
         mContext = HttpLib.getContext();
         generateGlobalConfig();
@@ -418,7 +425,7 @@ public class HttpRequestManager {
             }
         }
         OkHttpClient mHttpClient = builder.retryOnConnectionFailure(true)
-               .connectTimeout(15, TimeUnit.SECONDS).build();
+                .connectTimeout(15, TimeUnit.SECONDS).build();
         // generateLocalConfig();
         Api api = new Retrofit.Builder()
                 .baseUrl(ApiHost.getHost())
@@ -449,7 +456,7 @@ public class HttpRequestManager {
 
                     @Override
                     public void onNext(ResponseBody responseBody) {
-                        System.out.println("执行成功"+responseBody);
+                        System.out.println("执行成功" + responseBody);
                         if (mCallback != null) {
                             mCallback.onResponse(responseBody);
                         }
@@ -457,7 +464,7 @@ public class HttpRequestManager {
 
                     @Override
                     public void onError(Throwable e) {
-                        System.out.println("执行出错"+e);
+                        System.out.println("执行出错" + e);
                         if (mCallback != null) {
                             mCallback.onError(new ApiException(e));
                         }

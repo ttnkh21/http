@@ -99,7 +99,7 @@ public class ApiException extends Exception {
                 case ApiCode.Http.GATEWAY_TIMEOUT:
                 case ApiCode.Http.SERVICE_UNAVAILABLE:
                 default:
-                    ex.message = "网络错误...";
+                    ex.message = "网络错误..." + e;
                     break;
             }
             return ex;

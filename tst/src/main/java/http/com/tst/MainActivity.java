@@ -145,7 +145,8 @@ public class MainActivity extends AppCompatActivity {
         Porgress mPorgress = new Porgress(this);
         mPorgress.setProgress(100);
         mPorgress.setMessage("加载呢");
-        HttpRequestFactory.doPost(new UpdateRequest(), new ResultCallbackAdapterIs<String>(this) {
+        // HttpRequestFactory.doPost(new UpdateRequest(), new ResultCallbackAdapterIs<String>(this) {
+        HttpRequestFactory.doPost(new Login(), new ResultCallbackAdapterIs<String>(this) {
             @Override
             public void doOnError(ApiException ex) {
                 super.doOnError(ex);

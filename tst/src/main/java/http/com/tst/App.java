@@ -43,6 +43,7 @@ public class App extends Application {
                 .configLevel(Log.VERBOSE);//设置日志最小输出级别，默认Log.VERBOSE
 
         HttpLib.config(this)//配置请求主机地址
+                //.baseUrl(CommonConfig.API_HOST="https://api.douban.com/v2/")
                 .baseUrl(CommonConfig.API_HOST)
                 //配置全局请求头
                 .globalHeaders(new HashMap<String, String>())
@@ -98,6 +99,6 @@ public class App extends Application {
                 //配置主机证书验证
                 .hostnameVerifier(new SSLUtil.UnSafeHostnameVerifier("http://192.168.1.100/"))
                 //配置SSL证书验证
-                .SSLSocketFactory(SSLUtil.getSslSocketFactory(null, null, null));
+                .SSLSocketFactory(SSLUtil.getSslSocketFactory(null, null, null)).build();
     }
 }
