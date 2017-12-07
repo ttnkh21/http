@@ -92,7 +92,8 @@ private void http() {
                 //配置主机证书验证
                 .hostnameVerifier(new SSLUtil.UnSafeHostnameVerifier("http://192.168.1.100/"))
                 //配置SSL证书验证
-                .SSLSocketFactory(SSLUtil.getSslSocketFactory(null, null, null));
+                .SSLSocketFactory(SSLUtil.getSslSocketFactory(null, null, null))
+                .build(); // 必须调用它,初始化时机没处理好,暂时这样调用吧
     }
 ~~~
 
