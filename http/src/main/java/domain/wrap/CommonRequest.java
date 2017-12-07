@@ -7,4 +7,6 @@ import api.ObtainPath;
  */
 @ObtainPath("")
 public class CommonRequest {
+    //1220563
+    public String mAutoPrams;
 }

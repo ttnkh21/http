@@ -57,6 +57,10 @@ public class HttpRequestFactory {
             ObtainPath mObtainPath = common.getClass().getAnnotation(
                     ObtainPath.class);
             pathPostfix = mObtainPath.value();
+            // 1220563
+            if (!TextUtils.isEmpty(common.mAutoPrams)) {
+                pathPostfix += common.mAutoPrams;
+            }
             long end = SystemClock.currentThreadTimeMillis();
             Logger.e(TAG, "##解析耗时##" + (end - start) + "##毫秒##" + (end - start) / 1000
                     + "##秒##");

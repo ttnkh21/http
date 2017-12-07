@@ -43,8 +43,8 @@ public class App extends Application {
                 .configLevel(Log.VERBOSE);//设置日志最小输出级别，默认Log.VERBOSE
 
         HttpLib.config(this)//配置请求主机地址
-                //.baseUrl(CommonConfig.API_HOST="https://api.douban.com/v2/")
-                .baseUrl(CommonConfig.API_HOST)
+                .baseUrl(CommonConfig.API_HOST="https://api.douban.com/v2/")
+                //.baseUrl(CommonConfig.API_HOST)
                 //配置全局请求头
                 .globalHeaders(new HashMap<String, String>())
                 //配置全局请求参数
